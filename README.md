@@ -109,12 +109,12 @@ Train-Test Split (80/20, stratified)<br>
 StandardScaler (Feature Normalization)<br>
 │<br>
 ├──────────────────────────────────────┐<br>
-▼<br>                                  ▼
-Classical ML Models (×10)         Hybrid Stacking Models (×10)
-│                                      │
-▼                                      ▼
-Evaluation & Metrics              Evaluation & AUC-ROC
-│                                      │
+▼                                      ▼<br>
+Classical ML Models (×10)         Hybrid Stacking Models (×10)<br>
+│                                      │<br>
+▼                                      ▼<br>
+Evaluation & Metrics              Evaluation & AUC-ROC<br>
+│                                      │<br>
 └──────────────┬───────────────────────┘<br>
 ▼<br>
 Model Comparison & Selection<br>
@@ -218,8 +218,8 @@ new_patient = {
 Random Forest      --> STROKE<br>
 XGBoost            --> STROKE<br>
 Extra Trees        --> STROKE<br>
-...
+
 ========== HYBRID STACKING MODELS ==========<br>
 Hybrid_1_ET_RF_XGB --> STROKE<br>
 Hybrid_2_ET_RF_KNN --> STROKE
-...
+
