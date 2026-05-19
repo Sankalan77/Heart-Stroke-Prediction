@@ -106,10 +106,10 @@ Feature / Target Split<br>
 Train-Test Split (80/20, stratified)<br>
 │<br>
 ▼<br>
-StandardScaler (Feature Normalization)
-│
-├──────────────────────────────────────┐
-▼                                      ▼
+StandardScaler (Feature Normalization)<br>
+│<br>
+├──────────────────────────────────────┐<br>
+▼<br>                                  ▼<br>
 Classical ML Models (×10)         Hybrid Stacking Models (×10)
 │                                      │
 ▼                                      ▼
