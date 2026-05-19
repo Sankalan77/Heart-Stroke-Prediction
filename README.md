@@ -95,17 +95,17 @@ Key highlights:
 ## 🔁 Project Pipeline
 
 Raw Dataset (stroke_dataset_smote.csv)<br>
-│
-▼
-Data Loading & EDA
-│
-▼
-Feature / Target Split
-│
-▼
-Train-Test Split (80/20, stratified)
-│
-▼
+│<br>
+▼<br>
+Data Loading & EDA<br>
+│<br>
+▼<br>
+Feature / Target Split<br>
+│<br>
+▼<br>
+Train-Test Split (80/20, stratified)<br>
+│<br>
+▼<br>
 StandardScaler (Feature Normalization)
 │
 ├──────────────────────────────────────┐
