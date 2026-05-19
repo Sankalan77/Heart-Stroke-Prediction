@@ -109,8 +109,8 @@ Train-Test Split (80/20, stratified)<br>
 StandardScaler (Feature Normalization)<br>
 │<br>
 ├──────────────────────────────────────┐<br>
-▼                                      ▼<br>
-Classical ML Models (×10)         Hybrid Stacking Models (×10)<br>
+▼&nbsp                                      ▼<br>
+Classical ML Models (×10)&nbsp         Hybrid Stacking Models (×10)<br>
 │                                      │<br>
 ▼                                      ▼<br>
 Evaluation & Metrics              Evaluation & AUC-ROC<br>
