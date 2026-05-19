@@ -109,8 +109,8 @@ Train-Test Split (80/20, stratified)<br>
 StandardScaler (Feature Normalization)<br>
 │<br>
 ├──────────────────────────────────────┐<br>
-▼&nbsp                                      ▼<br>
-Classical ML Models (×10)&nbsp         Hybrid Stacking Models (×10)<br>
+▼                                      ▼<br>
+Classical ML Models (×10)         Hybrid Stacking Models (×10)<br>
 │                                      │<br>
 ▼                                      ▼<br>
 Evaluation & Metrics              Evaluation & AUC-ROC<br>
@@ -223,3 +223,79 @@ Extra Trees        --> STROKE<br>
 Hybrid_1_ET_RF_XGB --> STROKE<br>
 Hybrid_2_ET_RF_KNN --> STROKE
 
+---
+
+## 🛠 Tech Stack
+
+| Library | Purpose |
+|---|---|
+| `pandas` | Data loading and manipulation |
+| `numpy` | Numerical computing |
+| `matplotlib` | Plotting and visualization |
+| `seaborn` | Statistical heatmaps (confusion matrix) |
+| `scikit-learn` | ML models, preprocessing, metrics |
+| `xgboost` | Gradient boosted trees |
+| `imbalanced-learn` | SMOTE for class balancing |
+
+---
+
+## 🚀 Getting Started
+
+### 1. Clone the Repository
+```bash
+git clone https://github.com/your-username/stroke-prediction-hybrid.git
+cd stroke-prediction-hybrid
+```
+
+### 2. Install Dependencies
+```bash
+pip install pandas numpy matplotlib seaborn scikit-learn xgboost imbalanced-learn
+```
+
+### 3. Add the Dataset
+Place `stroke_dataset_smote.csv` in the project root directory.
+
+### 4. Run the Script
+```bash
+python hdp_final.py
+```
+
+Or open the notebook directly in **Google Colab**:
+
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1-JiYmNRLKKzv1dGIQxVy2Fz7u9bLjozB)
+
+---
+
+## 📋 Results Summary
+
+| Category | Best Models | Notes |
+|---|---|---|
+| Classical ML | Random Forest, Extra Trees, XGBoost | Ensemble models dominate |
+| Hybrid Stacking | ET + RF + XGB combos | Consistently highest AUC |
+| Acceptance Rate | Models ≥ 85% accuracy | Threshold for deployment |
+
+> Detailed results (accuracy, precision, recall, F1, AUC) are printed to console during execution.
+
+---
+
+## 📁 Project Structure
+
+stroke-prediction-hybrid/<br>
+│<br>
+├── hdp_final.py               # Main Python script (converted from Colab)<br>
+├── stroke_dataset_smote.csv   # Dataset (add manually)<br>
+└── README.md                  # Project documentation
+
+---
+
+## 🙌 Acknowledgements
+
+- Dataset balanced using **SMOTE** to address class imbalance in stroke prediction
+- Inspired by real-world clinical decision support challenges
+- Built and prototyped on **Google Colab**
+
+---
+
+<p align="center">
+  Made with ❤️ for better healthcare outcomes
+</p>
