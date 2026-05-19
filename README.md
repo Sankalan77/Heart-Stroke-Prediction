@@ -94,7 +94,7 @@ Key highlights:
 
 ## 🔁 Project Pipeline
 
-Raw Dataset (stroke_dataset_smote.csv)
+Raw Dataset (stroke_dataset_smote.csv)<br>
 │
 ▼
 Data Loading & EDA
