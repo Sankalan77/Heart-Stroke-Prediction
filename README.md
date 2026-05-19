@@ -93,3 +93,133 @@ Key highlights:
 ---
 
 ## 🔁 Project Pipeline
+
+Raw Dataset (stroke_dataset_smote.csv)
+│
+▼
+Data Loading & EDA
+│
+▼
+Feature / Target Split
+│
+▼
+Train-Test Split (80/20, stratified)
+│
+▼
+StandardScaler (Feature Normalization)
+│
+├──────────────────────────────────────┐
+▼                                      ▼
+Classical ML Models (×10)         Hybrid Stacking Models (×10)
+│                                      │
+▼                                      ▼
+Evaluation & Metrics              Evaluation & AUC-ROC
+│                                      │
+└──────────────┬───────────────────────┘
+▼
+Model Comparison & Selection
+│
+▼
+New Patient Prediction Demo
+
+---
+
+## 🤖 Models Evaluated
+
+### Classical ML Classifiers
+
+| # | Model | Key Config |
+|---|---|---|
+| 1 | **Logistic Regression** | `max_iter=1000` |
+| 2 | **Decision Tree** | `random_state=42` |
+| 3 | **Random Forest** | `n_estimators=100` |
+| 4 | **K-Nearest Neighbors** | `n_neighbors=5` |
+| 5 | **Support Vector Machine** | `kernel='rbf'` |
+| 6 | **Naive Bayes** | Gaussian NB |
+| 7 | **AdaBoost** | `n_estimators=100` |
+| 8 | **Gradient Boosting** | `random_state=42` |
+| 9 | **Extra Trees** | `n_estimators=100` |
+| 10 | **XGBoost** | `eval_metric='logloss'` |
+
+---
+
+## 🧩 Hybrid Stacking Ensembles
+
+10 stacking models were built using **3-model combinations** of the top base learners (ET, RF, XGB, KNN, GB), each stacked with a **Logistic Regression meta-classifier**.
+
+| Hybrid Model | Base Learners |
+|---|---|
+| Hybrid_1_ET_RF_XGB | Extra Trees + Random Forest + XGBoost |
+| Hybrid_2_ET_RF_KNN | Extra Trees + Random Forest + KNN |
+| Hybrid_3_ET_XGB_KNN | Extra Trees + XGBoost + KNN |
+| Hybrid_4_RF_XGB_KNN | Random Forest + XGBoost + KNN |
+| Hybrid_5_ET_RF_GB | Extra Trees + Random Forest + Gradient Boosting |
+| Hybrid_6_ET_XGB_GB | Extra Trees + XGBoost + Gradient Boosting |
+| Hybrid_7_RF_XGB_GB | Random Forest + XGBoost + Gradient Boosting |
+| Hybrid_8_ET_KNN_GB | Extra Trees + KNN + Gradient Boosting |
+| Hybrid_9_RF_KNN_GB | Random Forest + KNN + Gradient Boosting |
+| Hybrid_10_ET_RF_XGB | Extra Trees + Random Forest + XGBoost *(alt config)* |
+
+> Meta-classifier: **Logistic Regression** (`max_iter=5000`, `cv=3–5`, `passthrough=True`)
+
+---
+
+## 📏 Evaluation Metrics
+
+Each model is evaluated on:
+
+- **Accuracy** — Overall correct predictions
+- **Precision** — True positives out of all positive predictions
+- **Recall** — True positives out of all actual positives
+- **F1-Score** — Harmonic mean of Precision and Recall
+- **AUC-ROC** — Area under the Receiver Operating Characteristic curve
+- **Confusion Matrix** — TP / TN / FP / FN breakdown
+
+> ⚠️ **Acceptance Threshold**: Models with accuracy **≥ 85%** are marked `ACCEPTED`; others are marked `REJECTED`.
+
+---
+
+## 📊 Visualizations
+
+The project generates the following plots:
+
+- 📊 Vertical bar chart — Accuracy comparison of all ML models
+- 📊 Horizontal bar chart — Accuracy comparison of all ML models
+- 🟥 Confusion matrices — For each individual model (heatmap)
+- 📉 AUC-ROC curves — All classical models on one plot
+- 📉 AUC-ROC curves — All hybrid stacking models on one plot
+
+---
+
+## 🏥 Patient Prediction Demo
+
+The project includes a live prediction block for a **new patient**. The example uses an extreme high-risk profile:
+
+```python
+new_patient = {
+    'Age': 78,
+    'Hypertension': 1,
+    'Heart_Disease': 1,
+    'Average_Glucose_Level': 285.5,
+    'BMI': 38.2,
+    'Stress_Level': 9.5,
+    'Blood_Pressure': 210,
+    'Cholesterol': 320,
+    'MRI_Result': 9.1,
+    'Smoking_Status_Formerly': 1,
+    'Family_History_Yes': 1,
+    # ... (all features)
+}
+```
+
+**Output example:**
+
+========== BASIC MODELS ==========
+Random Forest      --> STROKE
+XGBoost            --> STROKE
+Extra Trees        --> STROKE
+...
+========== HYBRID STACKING MODELS ==========
+Hybrid_1_ET_RF_XGB --> STROKE
+Hybrid_2_ET_RF_KNN --> STROKE
+...
